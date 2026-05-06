@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background: #0a0e14;
+  color: #e8ecf2;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Subtle grain overlay across whole app */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1419;
+}
+::-webkit-scrollbar-thumb {
+  background: #252e3a;
+  border-radius: 4px;
+  border: 2px solid #0f1419;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4452;
+}
+
+/* Custom utility: glow ring */
+.glow-amber {
+  box-shadow: 0 0 0 1px rgba(232, 165, 59, 0.2), 0 0 20px -5px rgba(232, 165, 59, 0.4);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Tabular numbers everywhere they appear in stats */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Pretty input focus */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #e8a53b, 0 0 0 4px rgba(232, 165, 59, 0.15);
+  border-color: #e8a53b;
+}
+
+/* Loading shimmer */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 46, 58, 0) 0%,
+    rgba(37, 46, 58, 0.6) 50%,
+    rgba(37, 46, 58, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Marker dots for serial-numbered items */
+.marker-dot::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e8a53b;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(232, 165, 59, 0.3);
+  color: #fff;
+}
